@@ -1,0 +1,72 @@
+@prefix : <https://example.com/dataset/geo-demo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix dataset: <https://example.com/dataset/geo-demo> .
+@prefix points: <https://example.com/dataset/geo-demo/points> .
+@prefix polys: <https://example.com/dataset/geo-demo/polys> .
+
+<https://example.com/dataset/geo-demo>
+  a dcat:Dataset , owl:Ontology ;
+  dcterms:title "GeoSPARQL 1.1 Example Dataset"@en ;
+  dcterms:description """A demonstration dataset for of GeoSPARQL objects.
+    
+This example demonstrates GeoSPARQL 1.0 and new GeoSPARQL 1.1. geometry serializations (GeoJSON) of `Feature` instances, collected in instances of the new `FeatureCollection` class and a _suggestion_ for the use of [DCAT](https://www.w3.org/TR/vocab-dcat/) to package datasets. New GeoSPARQL 1.1. properties,  such as `hasBoundingBox`, are also used.
+
+Note that GeoSPARQL 1.1 makes no recommendations regarding dataset-level data packaging, however DCAT is a well-used and generic dataset description ontology."""@en ;
+  dcterms:publisher [
+    a sdo:Organization ;
+    sdo:name "Open Geospatial Consortium" ;
+    sdo:url "https://www.ogc.org"^^xsd:anyURI ;
+  ] ;
+  dcterms:creator "OGC GeoSPARQL Standards Working Group" ;
+  dcterms:created "2021-06-16"^^xsd:date ;
+  dcterms:identifier "geo-demo"^^xsd:token ;
+  dcterms:modified "2021-05-21"^^xsd:date ;
+  dcterms:license "http://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+  dcterms:spatial [
+    a dcterms:Location ;
+    geo:hasBoundingBox [
+      a geo:Geometry ;
+      geo:asWKT "POLYGON ((96.0000 -45.0000, 96.0000 -9.0000, 168.0000 -9.0000, 168.0000 -45.0000, 96.0000 -45.0000))"^^geo:wktLiteral ;
+      geo:asGeoJSON "{\"type\": \"Polygon\", \"coordinates\": [[ [96.0,-45.0],[96.0,-9.0], [168.0,-9.0], [168.0,-45.0], [96.0,-45.0]]]}"^^geo:geoJSONLiteral ;      
+    ] ;
+    locn:geometry "POLYGON ((96.0000 -45.0000, 96.0000 -9.0000, 168.0000 -9.0000, 168.0000 -45.0000, 96.0000 -45.0000))"^^geo:wktLiteral ;
+    rdfs:comment "This spatial information for this dataset contains geo:hasBoundingBox, the GeoSPARQL style of bounding box, as well as locn:geometry, the DCAT style of bounding box" ;
+  ] ;
+  dcat:contactPoint [
+    a vcard:Individual ;
+    vcard:hasName "Nicholas Car" ;
+    vcard:hasEmail "nicholas.car@surroundaustralia.com"^^xsd:anyURI ;
+    sdo:affiliation <https://linked.data.gov.au/org/surround> ;
+  ] ;
+  dcat:keyword "GeoSPARQL", "demonstration" , "Australia" ;
+  rdfs:member
+    points: ,
+    polys: ;
+.
+
+points:
+  a geo:FeatureCollection ;
+  dcterms:identifier "points"^^xsd:token ;
+  dcterms:title "Points Feature Collection" ;
+  dcterms:description "A FeatureCollection of POINT instances"@en ;
+  geo:hasBoundingBox [
+    a geo:Geometry ;
+    geo:asWKT "POLYGON ((150.467423 -33.491384, 150.467423 -34.3223631, 150.9920201 -34.3223631, 150.9920201 -33.491384, 150.467423 -33.491384))"^^geo:wktLiteral ;
+  ] ;
+  rdfs:member
+    :camerons-corner ,
+    :shorncliffe-point-1 ,
+    :shorncliffe-point-2 ,
+    :shorncliffe-point-3 ,
+    :wyvenhoe ;
+.
