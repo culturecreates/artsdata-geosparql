@@ -6,6 +6,15 @@ https://github.com/opengeospatial/ogc-geosparql
 Demo-dataset:
 https://github.com/opengeospatial/ogc-geosparql/blob/master/1.1/examples/demo-dataset.ttl
 
+## Triple Store
+
+I am using GraphDB 10.2 in a Docker image khaller/graphdb-free:10.2.0
+
+The GraphDB GeoSPARQL extension has been turned on using:
+```
+PREFIX geoSparql: <http://www.ontotext.com/plugins/geosparql#>
+INSERT DATA { [] geoSparql:enabled "true" . }
+```
 
 ## Quartiers in Laval 
 Data from https://www.donneesquebec.ca/recherche/dataset/limites-des-anciennes-municipalites
