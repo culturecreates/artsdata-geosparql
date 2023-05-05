@@ -8,9 +8,11 @@ https://github.com/opengeospatial/ogc-geosparql/blob/master/1.1/examples/demo-da
 
 ## Triple Store
 
-I am using GraphDB 10.2 in a Docker image khaller/graphdb-free:10.2.0
+I am using GraphDB 10.2 in a Docker image:
 
-The GraphDB GeoSPARQL extension has been turned on using:
+`docker pull khaller/graphdb-free:10.2.0`
+
+The GraphDB GeoSPARQL plugin has been activated using:
 ```
 PREFIX geoSparql: <http://www.ontotext.com/plugins/geosparql#>
 INSERT DATA { [] geoSparql:enabled "true" . }
