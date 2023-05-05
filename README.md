@@ -31,3 +31,7 @@ WHERE {
         '''^^geo:wktLiteral .
 }
 ```
+
+When I load the turtle file with the 2 regions in Laval and try this SPARQL it does not work.
+
+Can you figure out how to make this work?
